@@ -18,7 +18,7 @@ public class AssetsContext
 
     }
 
-    public bool TryFetEntity(String name, out GameObject entity){
+    public bool TryGetEntity(String name, out GameObject entity){
         return entities.TryGetValue(name, out entity);
     }
 }

@@ -18,7 +18,25 @@ MonoBehaviour:
   m_GUID: 6a5eaed66688cec40a487bf1893e3a2c
   m_SerializeEntries:
   - m_GUID: 9e44a19c836748b47b4946af6b734b61
-    m_Address: Assets/Rescores_Runtime/Entity/GameObject.prefab
+    m_Address: GameObject
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5af046f28d74b7b40ba46b62482a034e
+    m_Address: BoxEntity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c37e9893595eb04b95c554a6e3a1a04
+    m_Address: TargetEntity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95e2eb366344e8642a1d465ef35aa551
+    m_Address: PlayerEntity
     m_ReadOnly: 0
     m_SerializedLabels:
     - Entities

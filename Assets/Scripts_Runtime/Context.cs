@@ -1,21 +1,18 @@
 using System;
 using UnityEngine;
 
-public class Context
-{
+public class Context {
     public AssetsContext assets;
 
-
-    public Context()
-    {
+    public GameContext gameContext;
+    public Context() {
         assets = new AssetsContext();
-
+        gameContext = new GameContext();
     }
 
 
-    public void Inject()
-    {
-
+    public void Inject() {
+        gameContext.Inject(assets);
     }
 
 

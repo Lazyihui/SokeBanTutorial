@@ -15,12 +15,13 @@ public class Main : MonoBehaviour
         // ==== Phase: Instantiate ====
         ctx = new Context();
         // ==== Phase: Inject ====
+        ctx.Inject();
         // ==== Phase: Init Binging Load ====
 
         ModuleAssets.Load(ctx.assets);
 
         // ==== Phase: Enter Game ====
-
+        Game_Business.New_Game(ctx.gameContext);
     }
 
     void Update()
