@@ -12,8 +12,11 @@ public class GameContext {
 
     public BoxRepository boxRepository;
 
+    public PlayerRepository playerRepository;
+
     public GameContext() {
         boxRepository = new BoxRepository();
+        playerRepository = new PlayerRepository();
         gameEntity = new GameEntity();
     }
 
