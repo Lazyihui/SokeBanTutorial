@@ -59,6 +59,7 @@ public static class Game_Business {
         int boxlen = ctx.boxRepository.TakeAll(out BoxEntity[] boxs);
         for (int i = 0; i < boxlen; i++) {
             BoxEntity box = boxs[i];
+            BoxDomain.CanMoveToDir(ctx, ctx.moduleInput.moveDir, box);
         }
     }
 

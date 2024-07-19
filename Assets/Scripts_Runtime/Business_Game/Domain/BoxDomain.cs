@@ -22,18 +22,37 @@ public static class BoxDomain {
     }
 
 
-    public static bool CanMoveToDir(Vector2 dir, BoxEntity box) {
-        RaycastHit2D hit = Physics2D.Raycast(box.transform.position + (Vector3)dir * 0.5f, dir, 0.5f);
-        if (!hit) {
-            // 要改
+    public static bool CanMoveToDir(GameContext ctx, Vector2 dir, BoxEntity box) {
+
+        PlayerEntity player = ctx.playerRepository.Find(x => x.id == ctx.gameEntity.playerRecordID - 1);
+
+        RaycastHit2D hit = Physics2D.Raycast(box.transform.position + (Vector3)dir * 0.5f, dir, 1.5f);
+        Debug.DrawLine(box.transform.position, box.transform.position + (Vector3)dir * 0.5f, Color.red, 1);
+
+        if (!hit&&player.isTouchBox) {
+            player.boxPlayerCanMove = true;
             Move(box, dir);
             return true;
         } else {
+            player.boxPlayerCanMove = false;
             return false;
         }
+
     }
 
-     static void Move(BoxEntity box, Vector2 dir) {
+    // RaycastHit2D hit = Physics2D.Raycast(box.transform.position + (Vector3)dir * 0.5f, dir, 0.5f);
+    // Debug.DrawLine(box.transform.position, box.transform.position + (Vector3)dir * 0.5f, Color.red, 1);
+    // if (!hit) {
+    //     // 要改
+    //     Move(box, dir);
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+    static void Move(BoxEntity box, Vector2 dir) {
+        Debug.Log("Move");
         box.Move(dir);
     }
 }
+
+// 

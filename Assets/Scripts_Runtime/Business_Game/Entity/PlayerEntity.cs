@@ -7,7 +7,12 @@ public class PlayerEntity : MonoBehaviour{
     public Vector2 moveDir;
 
     public LayerMask detectLayer;
+
+    public bool boxPlayerCanMove;
+
+    public bool isTouchBox;
     public void Ctor(){
+        isTouchBox = false;
     }
 
     public void SetPos(Vector3 pos){

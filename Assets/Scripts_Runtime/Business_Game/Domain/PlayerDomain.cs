@@ -33,22 +33,26 @@ public static class PlayerDomain {
             }
         }
     }
-    
-    static bool CanMoveToDir(Vector2 dir, PlayerEntity player) {
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, dir, 1, player.detectLayer);
-        if (!hit) {
-            return true;
-        } else {
 
-            if (hit.collider.GetComponent<BoxEntity>()) {
-                BoxEntity box = hit.collider.GetComponent<BoxEntity>();
-                if (BoxDomain.CanMoveToDir(dir, box)) {
+    static bool CanMoveToDir(Vector2 dir, PlayerEntity player) {
+        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, dir, 1.5f, player.detectLayer);
+        Debug.DrawLine(player.transform.position, player.transform.position + (Vector3)dir, Color.red, 1);
+
+        if (!hit) {
+            Debug.Log("No Hit");
+            return true;
+
+        } else {
+            if (hit.collider.CompareTag("Box")) {
+                player.isTouchBox = true;
+                if (player.boxPlayerCanMove) {
                     return true;
                 } else {
                     return false;
                 }
 
             } else {
+                player.isTouchBox = false;
                 return false;
             }
 
