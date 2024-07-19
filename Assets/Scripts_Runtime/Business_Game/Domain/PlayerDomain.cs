@@ -27,13 +27,13 @@ public static class PlayerDomain {
 
     public static void SetMoveDir(GameContext ctx, PlayerEntity player, Vector2 dir) {
         player.moveDir = dir;
-        Debug.Log(player.moveDir);
         if (player.moveDir != Vector2.zero) {
             if (CanMoveToDir(player.moveDir, player)) {
                 Move(player.moveDir, player);
             }
         }
     }
+    
     static bool CanMoveToDir(Vector2 dir, PlayerEntity player) {
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, dir, 1, player.detectLayer);
         if (!hit) {

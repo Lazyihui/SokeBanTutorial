@@ -8,18 +8,19 @@ public class ModuleInput {
     public void ProcessMove() {
         Vector2 moveAxis = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
             moveAxis = Vector2.right;
         }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             moveAxis = Vector2.left;
         }
-        if (Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
             moveAxis = Vector2.up;
         }
-        if (Input.GetKey(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
             moveAxis = Vector2.down;
         }
+        moveAxis.Normalize();
         this.moveDir = moveAxis;
     }
 }

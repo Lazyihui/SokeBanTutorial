@@ -53,7 +53,6 @@ public static class Game_Business {
         int playerlen = ctx.playerRepository.TakeAll(out PlayerEntity[] players);
         for (int i = 0; i < playerlen; i++) {
             PlayerEntity player = players[i];
-            Debug.Log(player.moveDir);
             PlayerDomain.SetMoveDir(ctx, player, ctx.moduleInput.moveDir);
         }
         // box

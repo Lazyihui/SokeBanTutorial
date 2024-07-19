@@ -11,7 +11,7 @@ public static class BoxDomain {
         }
         GameObject go = GameObject.Instantiate(prefab);
         BoxEntity box = go.GetComponent<BoxEntity>();
-        // box.Ctor();
+        box.Ctor();
         box.SetPos(pos);
 
         box.id = ctx.gameEntity.boxRecordID;
@@ -26,10 +26,14 @@ public static class BoxDomain {
         RaycastHit2D hit = Physics2D.Raycast(box.transform.position + (Vector3)dir * 0.5f, dir, 0.5f);
         if (!hit) {
             // 要改
-            box.transform.Translate(dir);
+            Move(box, dir);
             return true;
         } else {
             return false;
         }
+    }
+
+     static void Move(BoxEntity box, Vector2 dir) {
+        box.Move(dir);
     }
 }
