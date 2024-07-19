@@ -14,10 +14,22 @@ public static class BoxDomain {
         // box.Ctor();
         box.SetPos(pos);
 
-        box.id=ctx.gameEntity.boxRecordID;
+        box.id = ctx.gameEntity.boxRecordID;
         ctx.gameEntity.boxRecordID++;
         ctx.boxRepository.Add(box);
 
         return box;
+    }
+
+
+    public static bool CanMoveToDir(Vector2 dir, BoxEntity box) {
+        RaycastHit2D hit = Physics2D.Raycast(box.transform.position + (Vector3)dir * 0.5f, dir, 0.5f);
+        if (!hit) {
+            // 要改
+            box.transform.Translate(dir);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

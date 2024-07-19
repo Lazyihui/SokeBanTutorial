@@ -7,6 +7,8 @@ public class GameContext {
     //  inject 
     public AssetsContext assets;
 
+    public ModuleInput moduleInput;
+
 
     // repo
 
@@ -21,7 +23,8 @@ public class GameContext {
     }
 
 
-    public void Inject(AssetsContext assets) {
+    public void Inject(AssetsContext assets, ModuleInput moduleInput) {
         this.assets = assets;
+        this.moduleInput = moduleInput;
     }
 }

@@ -6,7 +6,7 @@ public class PlayerEntity : MonoBehaviour{
 
     public Vector2 moveDir;
 
-
+    public LayerMask detectLayer;
     public void Ctor(){
     }
 
@@ -14,5 +14,10 @@ public class PlayerEntity : MonoBehaviour{
         transform.position = pos;
     }
     
+    public void Move(Vector2 dir) {
+        Vector2 pos = transform.position;
+        pos = pos + dir;
+        transform.position = pos;
+    }
 
 }

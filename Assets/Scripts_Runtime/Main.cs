@@ -26,7 +26,8 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-
+        float dt = Time.deltaTime;
+        Game_Business.Tick(ctx.gameContext, dt);
     }
 
     // 当 安卓/iOS 应用程序退出时调用

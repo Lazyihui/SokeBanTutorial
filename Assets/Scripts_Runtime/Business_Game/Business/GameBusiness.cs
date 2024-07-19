@@ -29,12 +29,12 @@ public static class Game_Business {
         restFixTime += dt;
         const float FIX_INTERVAL = 0.020f;
 
-        if(restFixTime >= FIX_INTERVAL){
-            while(restFixTime >= FIX_INTERVAL){
+        if (restFixTime >= FIX_INTERVAL) {
+            while (restFixTime >= FIX_INTERVAL) {
                 restFixTime -= FIX_INTERVAL;
                 LogicFix(ctx, FIX_INTERVAL);
             }
-        }else{
+        } else {
             LogicFix(ctx, restFixTime);
             restFixTime = 0;
         }
@@ -45,11 +45,22 @@ public static class Game_Business {
     }
 
     static void PreTick(GameContext ctx, float dt) {
-
+        ctx.moduleInput.ProcessMove();
     }
 
     static void LogicFix(GameContext ctx, float dt) {
-
+        // player
+        int playerlen = ctx.playerRepository.TakeAll(out PlayerEntity[] players);
+        for (int i = 0; i < playerlen; i++) {
+            PlayerEntity player = players[i];
+            Debug.Log(player.moveDir);
+            PlayerDomain.SetMoveDir(ctx, player, ctx.moduleInput.moveDir);
+        }
+        // box
+        int boxlen = ctx.boxRepository.TakeAll(out BoxEntity[] boxs);
+        for (int i = 0; i < boxlen; i++) {
+            BoxEntity box = boxs[i];
+        }
     }
 
     static void LateTick(GameContext ctx, float dt) {
